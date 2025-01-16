@@ -3,11 +3,9 @@ package com.example.produtosApi.controller;
 
 import com.example.produtosApi.model.Produto;
 import com.example.produtosApi.repository.ProdutoRepository;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
 import java.util.UUID;
 
 @RestController
@@ -30,5 +28,8 @@ public class ProdutoController {
         return produto;
     }
 
-
+    @GetMapping("{id}")
+    public Produto obterPorId(@PathVariable("id") String id) {
+        return produtoRepository.findById(id).orElse(null);
+    }
 }
