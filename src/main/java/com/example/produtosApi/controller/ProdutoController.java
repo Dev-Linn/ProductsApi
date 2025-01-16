@@ -38,4 +38,13 @@ public class ProdutoController {
         produtoRepository.deleteById(id);
         return "Produto removido com sucesso!";
     }
+
+    @PutMapping("{id}")
+    public String atualizarProduto(@PathVariable("id") String id,
+                                 @RequestBody Produto produto){
+
+        produto.setId(id);
+        produtoRepository.save(produto);
+        return "Produto atualizado com sucesso!";
+    }
 }
